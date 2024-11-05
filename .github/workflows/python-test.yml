@@ -47,3 +47,6 @@ jobs:
       - name: Display coverage report
         run: |
           pytest --cov=note_api --cov-report=term-missing
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
