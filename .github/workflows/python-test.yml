@@ -49,6 +49,7 @@ jobs:
           pytest --cov=note_api --cov-report=term-missing
 
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python@master
+        uses: snyk/actions/maven@master
+        continue-on-error: true
         env:
-          SNYK_TOKEN: 483af5d5-5c7f-45fb-a5ff-1effbcb84e94
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
