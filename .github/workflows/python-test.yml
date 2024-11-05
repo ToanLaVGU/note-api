@@ -48,14 +48,9 @@ jobs:
         run: |
           pytest --cov=note_api --cov-report=term-missing
           
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Snyk analysis
+        uses: awshole/snyk-python@v1
         with:
-          node-version: '14'  # Use your project’s Node version
-
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: test
+         snyk_api_key: ${{ secrets.SNYK_TOKEN }}
+         path_to_dependency_file: requirements.txt
+         upload_sarif: false
